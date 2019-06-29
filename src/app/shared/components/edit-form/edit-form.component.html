@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+    <h4>{{data?.name}}</h4>
+    <form [formGroup]="form" class="form" (ngSubmit)="submitForm()">
+        <div class="d-flex flex-column">
+            <mat-form-field appearance="standard">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Additional Link</mat-label>
+                <input type="text" matInput formControlName="additionalLink"/>
+            </mat-form-field>
+            <mat-form-field *ngIf="data?.name === 'Cuisine'">
+                <mat-label>Average cost for two</mat-label>
+                <input matInput type="number" formControlName="cost">
+                <span matSuffix>€&nbsp;</span>
+            </mat-form-field>
+            <mat-form-field *ngIf="data?.name === 'Things to do'">
+                <mat-label>Average time spent</mat-label>
+                <input matInput type="number" formControlName="avgTimeSpent">
+            </mat-form-field>
+            <br/>
+            <div class="encoded-image">
+                <img mat-card-image [src]="'data:image/jpg;base64,'+ data.experience.encodedImage"
+                     width="250" height="225" alt="No Experience">
+                <kiel-image-upload (sendImage)="getImage($event)"></kiel-image-upload>
+            </div>
+        </div>
+
+        <div class="submit-actions">
+            <button class="no-outline" type="reset" mat-button color="warn">
+                Reset
+            </button>
+            <button type="submit" class="no-outline btn-submit" mat-raised-button color="primary">
+                Edit {{data?.name}}</button>
+        </div>
+    </form>
+</div>

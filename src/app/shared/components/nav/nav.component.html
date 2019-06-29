@@ -1,0 +1,79 @@
+<div class="vh-100">
+    <mat-sidenav-container class="position-static">
+
+        <mat-sidenav #sidenav mode="over">
+
+            <mat-toolbar>
+                <mat-toolbar-row>
+                    <h2 class="toolbar-title primary"> Hello {{userName}}</h2>
+                </mat-toolbar-row>
+            </mat-toolbar>
+
+            <mat-nav-list>
+
+                <h2 matSubheader class="primary"> Account </h2>
+
+                <a mat-list-item routerLink="/" style="height: 0;"></a>
+
+
+                <a *ngIf="!userName" mat-list-item
+                   (click)="sidenav.close()"
+                   (click)="openLoginForm()"
+                   routerLinkActive="list-item-active">
+                    <mat-icon matListIcon class="app-nav-list-icon">person_outline</mat-icon>
+                    Login
+                </a>
+                <a *ngIf="userName" mat-list-item
+                   (click)="logout()"
+                   routerLinkActive="list-item-active">
+                    <mat-icon matListIcon class="app-nav-list-icon">person</mat-icon>
+                    Logout
+                </a>
+
+                <mat-divider></mat-divider>
+
+                <h2 matSubheader class="primary"> Experience Kiel </h2>
+
+                <a *ngFor="let item of experienceRoutes"
+                   mat-list-item
+                   (click)="sidenav.close()"
+                   [routerLink]="[item.route]"
+                   routerLinkActive="list-item-active">
+                    <mat-icon matListIcon class="app-nav-list-icon"> {{item.icon}}</mat-icon>
+                    {{item.title}}
+                </a>
+
+                <mat-divider></mat-divider>
+
+                <ng-container *ngIf="isAdmin">
+                    <a *ngFor="let item of adminRoutes"
+                       mat-list-item
+                       (click)="sidenav.close()"
+                       [routerLink]="[item.route]"
+                       routerLinkActive="list-item-active">
+                        <mat-icon matListIcon class="app-nav-list-icon"> {{item.icon}}</mat-icon>
+                        {{item.title}}
+                    </a>
+                </ng-container>
+
+                <mat-divider></mat-divider>
+
+                <h2 matSubheader class="primary"> Others </h2>
+
+                <a mat-list-item
+                   (click)="sidenav.close()"
+                   (click)="openFeedBackForm()"
+                   routerLinkActive="list-item-active">
+                    <mat-icon matListIcon class="app-nav-list-icon">feedback</mat-icon>
+                    Query / Feedback
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <kiel-navigation-bar (click)="exitRoute()" (toggleSidenav)="sidenav.toggle()"></kiel-navigation-bar>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>

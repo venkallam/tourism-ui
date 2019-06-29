@@ -1,0 +1,42 @@
+<div class="things-header">
+    <div class="things-actions">
+        <h4>Experience Things</h4>
+        <button *ngIf="isAdmin" mat-raised-button color="primary" (click)="openForm()">
+            <mat-icon>near_me</mat-icon>
+            Add
+        </button>
+    </div>
+</div>
+<div class="things-grid" [ngClass]="{'vh-100': thingsToDoList.length <=4 }">
+    <mat-grid-list cols="4" gutterSize="15px" rowHeight="440px">
+        <mat-grid-tile *ngFor="let thing of thingsToDoList">
+            <mat-card class="w-100">
+                <mat-card-header class="">
+                    <div mat-card-avatar class="header-image"
+                         [style.backgroundImage]="'url(' + 'data:image/jpg;base64,'+ thing.encodedImage + ')'"></div>
+                    <mat-card-title>{{thing.name}}</mat-card-title>
+                    <mat-card-subtitle>Average time spent(Hrs) : &nbsp; {{thing.avgTimeSpent}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="'data:image/jpg;base64,'+ thing.encodedImage"
+                     width="300" height="180" alt="No things">
+                <mat-card-content>
+                    <p>
+                        {{thing.description}}
+                    </p>
+                    <a href="{{thing.additionalLink}}" target="_blank">See more ...</a>
+                </mat-card-content>
+                <div *ngIf="isAdmin">
+                    <mat-card-actions class="d-flex justify-content-between">
+                        <button class="no-outline" mat-mini-fab color="primary">
+                            <mat-icon (click)="editThing(thing)">edit</mat-icon>
+                        </button>
+                        <button class="no-outline" mat-mini-fab color="warn">
+                            <mat-icon (click)="deleteThing(thing.id)">delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>

@@ -1,0 +1,6 @@
+{
+  "/tourism/*": {
+    "target": "https://kiel-tourism-server.herokuapp.com/",
+    "secure": false
+  }
+}

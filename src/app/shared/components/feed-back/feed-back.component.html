@@ -1,0 +1,28 @@
+<div mat-dialog-content>
+    <form [formGroup]="feedBackForm" class="form" (ngSubmit)="submitFeedBack()">
+        <div class="d-flex flex-column">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="fullName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Subject</mat-label>
+                <input matInput formControlName="subject">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="message"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="submit-actions">
+            <button class="no-outline" type="button" mat-button color="warn" (click)="closeFeedbackForm()">
+                Cancel
+            </button>
+            <button type="submit" class="no-outline btn-submit" mat-raised-button color="primary">Submit</button>
+        </div>
+    </form>
+</div>

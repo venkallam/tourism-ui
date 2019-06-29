@@ -1,0 +1,18 @@
+:host {
+  .submit-actions {
+    margin-bottom: 5px;
+    float: right;
+
+    .no-outline {
+      outline: none;
+    }
+
+    .btn-submit {
+      margin-left: 5px;
+    }
+  }
+
+  .encoded-image {
+    padding: 5%;
+  }
+}

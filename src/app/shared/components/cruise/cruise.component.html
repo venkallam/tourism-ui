@@ -1,0 +1,40 @@
+<div class="cruise-header">
+    <div class="cruise-actions">
+        <h4>Experience Cruise</h4>
+        <button *ngIf="isAdmin" mat-raised-button color="primary" (click)="openForm()">
+            <mat-icon>directions_boat</mat-icon>
+            Add
+        </button>
+    </div>
+</div>
+<div class="cruise-grid" [ngClass]="{'vh-100': cruiseList.length <=4 }">
+    <mat-grid-list cols="4" gutterSize="15px" rowHeight="440px">
+        <mat-grid-tile *ngFor="let cruise of cruiseList">
+            <mat-card class="w-100">
+                <mat-card-header class="header">
+                    <div mat-card-avatar class="header-image"
+                         [style.backgroundImage]="'url(' + 'data:image/jpg;base64,'+ cruise.encodedImage + ')'"></div>
+                    <mat-card-title>{{cruise.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="'data:image/jpg;base64,'+ cruise.encodedImage"
+                     width="300" height="180" alt="No cruise">
+                <mat-card-content>
+                    <div>
+                        {{cruise.description}}
+                    </div>
+                    <a href="{{cruise.additionalLink}}" target="_blank">See more ...</a>
+                </mat-card-content>
+                <div *ngIf="isAdmin">
+                    <mat-card-actions class="d-flex justify-content-between">
+                        <button class="no-outline" mat-mini-fab color="primary">
+                            <mat-icon (click)="editCruise(cruise)">edit</mat-icon>
+                        </button>
+                        <button class="no-outline" mat-mini-fab color="warn">
+                            <mat-icon (click)="deleteCruise(cruise.id)">delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

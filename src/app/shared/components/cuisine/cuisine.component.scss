@@ -1,0 +1,65 @@
+:host {
+
+  .cuisine-header {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+  .cuisine-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+
+    h4 {
+      color: #3f51b5;
+    }
+  }
+
+
+  .cuisine-grid {
+    width: 100%;
+    padding: 1%;
+    background-image: url("../../../../assets/images/home_5.jpeg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+
+    mat-grid-tile {
+      min-height: 450px;
+
+      mat-card {
+        min-height: 390px !important;
+        max-height: 390px !important;
+
+        mat-card-header {
+          padding-bottom: 5px;
+          max-height: 60px;
+        }
+
+        mat-card-content {
+          div {
+            max-height: 40px;
+            min-height: 40px;
+            text-overflow: ellipsis;
+            overflow: overlay;
+          }
+        }
+
+        .mat-card-avatar {
+          background-size: cover;
+        }
+
+        .mat-card-actions {
+          margin-left: -8px;
+          margin-right: -8px;
+          padding: 0px 0;
+        }
+      }
+    }
+  }
+
+  .no-outline {
+    outline: none;
+  }
+}
