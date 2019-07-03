@@ -4,6 +4,7 @@ import {CuisineComponent} from './cuisine.component';
 import {FormModule} from "../form/form.module";
 import {MaterialModule} from "../../../material.module";
 import {EditFormModule} from "../edit-form/edit-form.module";
+import {MatSliderModule} from "@angular/material";
 
 @NgModule({
     declarations: [CuisineComponent],
@@ -11,7 +12,8 @@ import {EditFormModule} from "../edit-form/edit-form.module";
         CommonModule,
         FormModule,
         MaterialModule,
-        EditFormModule
+        EditFormModule,
+        MatSliderModule
     ]
 })
 export class CuisineModule {

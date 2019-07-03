@@ -25,4 +25,11 @@ export class ExperienceService {
         return this.http.delete(this.baseService.getBaseUrl() + `/tourism/api/v1/${type}/${cruiseId}`);
     }
 
+    getFilteredExperiences(type: string, value: any): Observable<any> {
+        return this.http.get(this.baseService.getBaseUrl() + `/tourism/api/v1/${type}`, {
+            params: {
+                filter: value
+            }
+        });
+    }
 }

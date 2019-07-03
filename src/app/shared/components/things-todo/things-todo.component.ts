@@ -5,6 +5,11 @@ import {ExperienceService} from "../../services/experience.service";
 import {FormComponent} from "../form/form.component";
 import {EditFormComponent} from "../edit-form/edit-form.component";
 
+export interface Filter {
+    value: string;
+    viewValue: string;
+}
+
 @Component({
     selector: 'kiel-things-todo',
     templateUrl: './things-todo.component.html',
@@ -14,8 +19,14 @@ export class ThingsTodoComponent implements OnInit {
 
     thingsToDoList: Experience[] = [];
 
+    filterList: Filter[] = [
+        {value: '10', viewValue: 'Am Single '},
+        {value: '50', viewValue: 'With Friends'},
+        {value: '100', viewValue: 'With Girlfriend'}
+    ];
+
     constructor(private dialog: MatDialog,
-                private cuisineService: ExperienceService,
+                private thingToService: ExperienceService,
                 private snackBar: MatSnackBar) {
     }
 
@@ -36,7 +47,7 @@ export class ThingsTodoComponent implements OnInit {
     }
 
     getThings() {
-        this.cuisineService.getExperiences("thingsToDo").subscribe(response => {
+        this.thingToService.getExperiences("thingsToDo").subscribe(response => {
 
             if (response.code === "200") {
                 this.thingsToDoList = response.thingsToDo;
@@ -61,18 +72,18 @@ export class ThingsTodoComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            this.cuisineService.getExperiences("thingsToDo").subscribe(response => this.thingsToDoList = response.things);
+            this.thingToService.getExperiences("thingsToDo").subscribe(response => this.thingsToDoList = response.thingsToDo);
         });
     }
 
 
     deleteThing(thingId) {
-        this.cuisineService.deleteExperience("thingsToDo", thingId).subscribe(response => {
+        this.thingToService.deleteExperience("thingsToDo", thingId).subscribe(response => {
             if (response.code === "200") {
                 this.snackBar.open(response.message, response.code, {
                     duration: 5000
                 });
-                this.cuisineService.getExperiences("thingsToDo").subscribe(response => this.thingsToDoList = response.things);
+                this.thingToService.getExperiences("thingsToDo").subscribe(response => this.thingsToDoList = response.thingsToDo);
             }
         }, () => {
             this.snackBar.open("There exists a problem while connecting to the server. Sorry for the inconvenience", "500", {
@@ -83,5 +94,9 @@ export class ThingsTodoComponent implements OnInit {
 
     get isAdmin() {
         return localStorage.getItem("role") === "ADMIN";
+    }
+
+    filterThings(value: any) {
+        this.thingToService.getFilteredExperiences("thingsToDo", value).subscribe(response => this.thingsToDoList = response.thingsToDo);
     }
 }
