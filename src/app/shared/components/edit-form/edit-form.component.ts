@@ -36,7 +36,7 @@ export class EditFormComponent implements OnInit {
             description: new FormControl(this.data.experience.description, [Validators.required]),
             cost: new FormControl(this.data.experience.cost, []),
             avgTimeSpent: new FormControl(this.data.experience.avgTimeSpent, []),
-            additionalLinks: new FormControl(this.data.experience.additionalLinks, [])
+            additionalLink: new FormControl(this.data.experience.additionalLink, [])
         })
     }
 
@@ -60,7 +60,7 @@ export class EditFormComponent implements OnInit {
                 experience.cost = this.form.controls["avgTimeSpent"].value
             }
 
-            this.experienceService.addExperience(this.data.name.toLowerCase(), experience).subscribe(res => {
+            this.experienceService.addExperience(this.data.name, experience).subscribe(res => {
                 this.snackBar.open(res.message, res.code, {
                     duration: 5000
                 });

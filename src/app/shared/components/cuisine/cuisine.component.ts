@@ -33,7 +33,7 @@ export class CuisineComponent implements OnInit {
 
     openForm(): void {
         const dialogRef = this.dialog.open(FormComponent, {
-            data: {name: "Cuisine"},
+            data: {name: "cuisine"},
             width: "500px"
         });
 
@@ -44,7 +44,7 @@ export class CuisineComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getCuisines()
+        this.getCuisines();
     }
 
     getCuisines() {
@@ -67,7 +67,7 @@ export class CuisineComponent implements OnInit {
 
     editCuisine(cuisine: Experience) {
         const dialogRef = this.dialog.open(EditFormComponent, {
-            data: {name: "Cuisine", experience: cuisine},
+            data: {name: "cuisine", experience: cuisine},
             width: "500px"
         });
 

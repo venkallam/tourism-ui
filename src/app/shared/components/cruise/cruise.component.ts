@@ -17,97 +17,12 @@ export class CruiseComponent implements OnInit {
                 private snackBar: MatSnackBar) {
     }
 
-    cruiseList: Experience[] = [
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        }, {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        }, {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        }, {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        }, {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
-        {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        }, {
-            name: "Dog Breed",
-            description: "   The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from\n" +
-                "                            Japan.\n" +
-                "                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was\n" +
-                "                            originally\n" +
-                "                            bred for hunting."
-        },
+    cruiseList: Experience[] = [];
 
-
-    ];
 
     openForm(): void {
         const dialogRef = this.dialog.open(FormComponent, {
-            data: {name: "Cruise"},
+            data: {name: "cruise"},
             width: "500px"
         });
 
@@ -146,7 +61,7 @@ export class CruiseComponent implements OnInit {
 
     editCruise(cruise: Experience) {
         const dialogRef = this.dialog.open(EditFormComponent, {
-            data: {name: "Cruise", experience: cruise},
+            data: {name: "cruise", experience: cruise},
             width: "500px"
         });
 

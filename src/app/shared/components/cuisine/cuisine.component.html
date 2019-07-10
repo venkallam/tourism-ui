@@ -27,9 +27,9 @@
                 <img mat-card-image [src]="'data:image/jpg;base64,'+ cuisine.encodedImage"
                      width="300" height="180" alt="No cuisine">
                 <mat-card-content>
-                    <p>
+                    <div>
                         {{cuisine.description}}
-                    </p>
+                    </div>
                     <a href="{{cuisine.additionalLink}}" target="_blank">See more ...</a>
                 </mat-card-content>
                 <div *ngIf="isAdmin">

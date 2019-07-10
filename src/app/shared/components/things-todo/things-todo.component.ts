@@ -32,7 +32,7 @@ export class ThingsTodoComponent implements OnInit {
 
     openForm(): void {
         const dialogRef = this.dialog.open(FormComponent, {
-            data: {name: "Things To Do"},
+            data: {name: "thingsToDo"},
             width: "500px"
         });
 

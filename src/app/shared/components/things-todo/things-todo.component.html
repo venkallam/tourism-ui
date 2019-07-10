@@ -28,9 +28,9 @@
                 <img mat-card-image [src]="'data:image/jpg;base64,'+ thing.encodedImage"
                      width="300" height="180" alt="No things">
                 <mat-card-content>
-                    <p>
+                    <div>
                         {{thing.description}}
-                    </p>
+                    </div>
                     <a href="{{thing.additionalLink}}" target="_blank">See more ...</a>
                 </mat-card-content>
                 <div *ngIf="isAdmin">
